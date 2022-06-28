@@ -1,0 +1,36 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #1f4e16;
+  color: rgb(255, 254, 254);
+  font-weight: 200;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.header img {
+  margin: 0 50px;
+  height: 80px;
+}
+
+p {
+  margin: 20px auto;
+  font-size: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:active {
+  color: rgb(33, 170, 33);
+  text-decoration: underline;
+}
