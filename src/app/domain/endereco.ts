@@ -1,8 +1,6 @@
-export interface Pessoa {
-  id: string;
-  nome: string;
-  aniver: Date;
-  idade: number;
-  documento: string;
-  documentoValido: boolean;
+export interface Endereco {
+  endereco: string;
+  numero: number;
+  bairro: string;
+  cidade: string;
 }

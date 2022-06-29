@@ -1,7 +1,7 @@
 import { StatusImovel } from './../enum/StatusImovel.enum';
 import { TipoImovel } from './../enum/TipoImovel.enum';
-import { Endereco } from "./endereco";
-import { Hospedes } from "./hospedes";
+import { Endereco } from './endereco';
+import { Hospedes } from './hospedes';
 
 export interface Imovel {
   id: string;

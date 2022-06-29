@@ -1,8 +1,10 @@
-export interface Pessoa {
+import { Endereco } from './endereco';
+
+export interface Hospedes {
   id: string;
   nome: string;
-  aniver: Date;
-  idade: number;
-  documento: string;
-  documentoValido: boolean;
+  cpf: string;
+  telefone: string;
+  dataNasc: Date;
+  endereco: Endereco;
 }

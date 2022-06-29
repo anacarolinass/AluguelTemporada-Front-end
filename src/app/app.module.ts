@@ -7,25 +7,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { SobreModule } from './sobre/sobre.module';
-import { ReservasModule } from './reservas/reservas.module';
+import { HospedesModule } from './hospedes/hospedes.module';
 import { AcomodacoesModule } from './acomodacoes/acomodacoes.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HomeModule,
     SobreModule,
     PoliticaModule,
-    ReservasModule,
+    HospedesModule,
     AcomodacoesModule,
-    MenuModule
-
+    MenuModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
