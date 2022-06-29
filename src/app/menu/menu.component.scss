@@ -1,5 +1,5 @@
 .header {
-  position: absolute;
+ position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -7,30 +7,36 @@
   width: 100%;
   display: flex;
   align-items: center;
-  background-color: #1f4e16;
-  color: rgb(255, 254, 254);
-  font-weight: 200;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(49, 111, 173);
+
+
 }
 
 .header img {
   margin: 0 50px;
   height: 80px;
+
 }
 
 p {
-  margin: 20px auto;
-  font-size: 20px;
-  margin-right: 10px;
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 22px;
+  margin-right: 20px;
   margin-left: 10px;
 }
 
 a {
   text-decoration: none;
-  color: white;
+  padding: 5px 10px;
+  color: rgb(26, 6, 51);
+  text-decoration: none;
+  display: inline-block;
+
+
+  &:hover {
+
+    color: rgb(98, 85, 116);
+}
 }
 
-a:active {
-  color: rgb(33, 170, 33);
-  text-decoration: underline;
-}
