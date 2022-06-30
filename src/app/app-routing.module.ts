@@ -5,11 +5,12 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { HospedesComponent } from './hospedes/hospedes.component';
+import { ImovelComponent } from './imovel/imovel.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'sobre', component: SobreComponent },
-  { path: 'acomodacoes', component: AcomodacoesComponent },
+  { path: 'acomodacoes', component: ImovelComponent },
   { path: 'politica', component: PoliticaComponent },
   { path: 'reservas', component: HospedesComponent },
 ];

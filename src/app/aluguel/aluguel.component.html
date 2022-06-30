@@ -1,0 +1,68 @@
+<div class="box">
+  <p>Aluguel</p>
+  <form class="form-box" [formGroup]="form" (ngSubmit)="cadastrar()">
+    <select formControlName="idHospedes">
+      <option value="">Selecione um Hospedes</option>
+      <option *ngFor="let item of hospedes" value="{{ item.id }}">
+        {{ item.nome }}
+      </option>
+    </select>
+    <select formControlName="idImovel">
+      <option value="">Selecione um Imovel</option>
+      <ng-template ngFor let-item [ngForOf]="imovel">
+        <option value="{{ item.id }}">
+          {{ item.nome }}
+        </option>
+      </ng-template>
+    </select>
+    <button type="submit" [disabled]="!form.valid">Cadastrar</button>
+  </form>
+  <hr />
+  <table class="tabelinha">
+    <tr>
+      <th>Hospedes</th>
+      <th>Imovel</th>
+      <th>Dias</th>
+      <th>Valor Total Diaria</th>
+      <th>Status Pedido</th>
+      <th>Status Imovel</th>
+      <th>Ações</th>
+    </tr>
+    <tr *ngFor="let aluguel of alugueis">
+      <td>{{ aluguel.hospedes.nome }}</td>
+      <td>{{ aluguel.imovel.nome }}</td>
+      <td>{{ aluguel.dias }}</td>
+      <td>{{ aluguel.valorTotalDiaria}}</td>
+      <td>{{ aluguel.statusPedido }}</td>
+      <td>{{ aluguel.statusImovel }}</td>
+
+      <!---<td>
+        <button *ngIf="aluguel.statusPedido === 'PENDENTE'" (click)="verModal(aluguel)">
+          Add Produto
+        </button>
+        <button *ngIf="aluguel.statusPedido === 'PENDENTE'">Pagar</button>
+        <button>detalhes</button>
+      </td>
+    </tr>
+  </table>
+  <div class="modal" *ngIf="formAddProduto.controls['idPedido'].value">
+    <form
+      class="form-box"
+      [formGroup]="formAddProduto"
+      (ngSubmit)="addProduto()"
+    >
+      <p>Adicionar itens ao pedido</p>
+      <select formControlName="idProduto">
+        <option value="">Selecione um Produto</option>
+        <option *ngFor="let item of produtos" value="{{ item.id }}">
+          {{ item.nome }}
+        </option>
+      </select>
+      <button type="submit" [disabled]="!formAddProduto.valid">
+        Adicionar
+      </button>
+    </form>
+    <div class="fundo"></div>
+  </div>
+</div>
+--->

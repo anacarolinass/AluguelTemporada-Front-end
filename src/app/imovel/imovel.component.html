@@ -1,0 +1,23 @@
+
+  <hr />
+  <h2>Imoveis</h2>
+  <table class="tabelinha">
+    <tr>
+      <th>Nome</th>
+      <th>Tipo Imovel</th>
+      <th>Endereço</th>
+      <th>Valor da Diaria</th>
+      <th>Ações</th>
+    </tr>
+    <tr *ngFor="let imovel of imoveis">
+      <td>{{ imovel.nome }}</td>
+      <td>{{ imovel.tipoImovel }}</td>
+      <td>{{ imovel.endereco }}</td>
+      <td>{{ imovel.valorDiaria }}</td>
+
+      <td>
+
+      </td>
+    </tr>
+  </table>
+

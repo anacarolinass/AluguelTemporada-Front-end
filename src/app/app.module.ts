@@ -1,3 +1,4 @@
+import { ImovelModule } from './imovel/imovel.module';
 import { MenuModule } from './menu/menu.module';
 import { PoliticaModule } from './politica/politica.module';
 import { NgModule } from '@angular/core';
@@ -19,7 +20,7 @@ import { AcomodacoesModule } from './acomodacoes/acomodacoes.module';
     SobreModule,
     PoliticaModule,
     HospedesModule,
-    AcomodacoesModule,
+    ImovelModule,
     MenuModule,
   ],
   providers: [],

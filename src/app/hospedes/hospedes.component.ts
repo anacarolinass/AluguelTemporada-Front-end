@@ -14,7 +14,7 @@ import { HospedesModel } from '../model/hospedes-model';
   styleUrls: ['./hospedes.component.scss'],
 })
 export class HospedesComponent implements OnInit {
-  list: Hospedes[] = [];
+  hospede: Hospedes[] = [];
 
   form: FormGroup = this.formBuilder.group({
     id: new FormControl(null),
@@ -35,7 +35,7 @@ export class HospedesComponent implements OnInit {
   private carregarTabela(): void {
     this.hospedesService.consultar().subscribe((domains: Hospedes[]) => {
       if (domains) {
-        this.list = domains;
+        this.hospede = domains;
       }
     });
   }
@@ -55,7 +55,7 @@ export class HospedesComponent implements OnInit {
     } else {
       this.hospedesService.cadastrar(hospedes).subscribe((domain: Hospedes) => {
         if (domain.id) {
-          this.list.push(domain);
+          this.hospede.push(domain);
           this.form.reset();
         }
       });

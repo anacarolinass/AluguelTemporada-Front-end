@@ -26,14 +26,14 @@
       <th>Telefone</th>
       <th>Data de Nascimento</th>
       <th>Idade</th>
-
       <th>Ações</th>
     </tr>
-    <tr *ngFor="let hospedes of list">
+    <tr *ngFor="let hospedes of hospede">
       <td>{{ hospedes.nome }}</td>
       <td>{{ hospedes.cpf }}</td>
       <td>{{ hospedes.telefone | date: "dd/MM/yyyy" }}</td>
       <td>{{ hospedes.dataNasc }}</td>
+
 
       <td>
         <button (click)="editar(hospedes)">Editar</button>
@@ -42,3 +42,5 @@
     </tr>
   </table>
 </div>
+
+
