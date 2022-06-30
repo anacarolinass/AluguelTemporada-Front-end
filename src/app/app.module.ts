@@ -1,3 +1,4 @@
+import { AluguelModule } from './aluguel/aluguel.module';
 import { ImovelModule } from './imovel/imovel.module';
 import { MenuModule } from './menu/menu.module';
 import { PoliticaModule } from './politica/politica.module';
@@ -22,6 +23,7 @@ import { AcomodacoesModule } from './acomodacoes/acomodacoes.module';
     HospedesModule,
     ImovelModule,
     MenuModule,
+    AluguelModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

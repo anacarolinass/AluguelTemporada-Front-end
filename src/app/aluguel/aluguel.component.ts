@@ -1,4 +1,3 @@
-
 import { ImovelService } from './../service/imovel.service';
 import { HospedesService } from './../service/hospedes.service';
 
@@ -14,7 +13,6 @@ import { AluguelService } from '../service/aluguel.service';
 import { Hospedes } from '../domain/hospedes';
 import { Imovel } from '../domain/Imovel';
 
-
 @Component({
   selector: 'app-pedido',
   templateUrl: './aluguel.component.html',
@@ -28,11 +26,13 @@ export class AluguelComponent implements OnInit {
   form: FormGroup = this.formBuilder.group({
     idHospedes: new FormControl('', [Validators.required]),
     idImovel: new FormControl('', [Validators.required]),
+    dias: new FormControl(),
   });
 
   formAddImovel: FormGroup = this.formBuilder.group({
     idHospedes: new FormControl('', [Validators.required]),
     idImovel: new FormControl('', [Validators.required]),
+    dias: new FormControl(),
   });
 
   constructor(
@@ -46,7 +46,6 @@ export class AluguelComponent implements OnInit {
     this.consultarAluguel();
     this.consultarImoveis();
     this.consultarHospedes();
-
   }
 
   private consultarHospedes(): void {
@@ -67,15 +66,17 @@ export class AluguelComponent implements OnInit {
     });
   }
 
-
   cadastrar(): void {
     if (this.form.valid) {
       const idHospedes = this.form.controls['idHospedes'].value;
       const idImovel = this.form.controls['idImovel'].value;
-      this.aluguelService.cadastrar(idHospedes, idImovel).subscribe(() => {
-        this.consultarAluguel();
-        this.resetForm();
-      });
+      const dias = this.form.controls['dias'].value;
+      this.aluguelService
+        .cadastrar(idHospedes, idImovel, dias)
+        .subscribe(() => {
+          this.consultarAluguel();
+          this.resetForm();
+        });
     }
   }
 
@@ -98,10 +99,10 @@ export class AluguelComponent implements OnInit {
 
   private resetForm(): void {
     this.form.reset();
-    this.form.controls['idFarmaceutico'].setValue('');
-    this.form.controls['idCliente'].setValue('');
+    this.form.controls['idHospedes'].setValue('');
+    this.form.controls['idImovel'].setValue('');
 
     this.formAddImovel.reset();
-    this.form.controls['idProduto'].setValue('');
+    this.form.controls['idImovel'].setValue('');
   }
 }

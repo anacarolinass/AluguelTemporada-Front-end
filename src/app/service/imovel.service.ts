@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 import { Imovel } from '../domain/Imovel';
 import { ImovelModel } from '../model/imovel-model';
 
-
-
 @Injectable({
   providedIn: 'root',
 })
@@ -18,8 +16,8 @@ export class ImovelService {
     return this.http.get<Imovel[]>(this.url + 'consultar');
   }
 
-  cadastrar(hospedesModel: ImovelModel): Observable<Imovel> {
-    return this.http.post<Imovel>(this.url + 'cadastrar', hospedesModel);
+  cadastrar(imovelModel: ImovelModel): Observable<Imovel> {
+    return this.http.post<Imovel>(this.url + 'cadastrar', imovelModel);
   }
 
   cadastraAutomatico(): Observable<Imovel> {

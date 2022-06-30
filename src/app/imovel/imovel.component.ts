@@ -15,18 +15,20 @@ import {
   styleUrls: ['./imovel.component.scss'],
 })
 export class ImovelComponent implements OnInit {
-  imoveis : Imovel [] = [];
+  imoveis: Imovel[] = [];
 
   form: FormGroup = this.formBuilder.group({
     id: new FormControl(null),
     nome: new FormControl(null, [Validators.required, Validators.minLength(2)]),
     tipoImovel: new FormControl(null),
     endereco: new FormControl(null),
-    valorDiaria: new FormControl(null)
+    valorDiaria: new FormControl(null),
   });
 
-
-  constructor(private formBuilder: FormBuilder, private imovelService: ImovelService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private imovelService: ImovelService
+  ) {}
 
   ngOnInit(): void {
     this.cadastraAutomatico();
@@ -49,7 +51,4 @@ export class ImovelComponent implements OnInit {
       this.imoveis = list;
     });
   }
-
-
 }
-

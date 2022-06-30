@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { HospedesComponent } from './hospedes/hospedes.component';
 import { ImovelComponent } from './imovel/imovel.component';
+import { AluguelComponent } from './aluguel/aluguel.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
