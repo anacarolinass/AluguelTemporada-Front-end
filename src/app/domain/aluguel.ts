@@ -6,7 +6,7 @@ import { Imovel } from './Imovel';
 export interface Aluguel {
   id: string;
   imovel: Imovel;
-  hospedes: Hospedes;
+  hospede: Hospedes;
   dias: string;
   valorTotalDiaria: number;
   statusPedido: StatusPedido;

@@ -1,37 +1,15 @@
-.form-box {
-  margin: 0 auto;
-  padding: 10px 0;
-  border: solid 1px rgb(18, 87, 236);
-  width: 450px;
-  border-radius: 15px;
-  box-shadow: 0 0 6px rgb(41, 98, 145);
-  margin-top: 80px;
-  margin-left: 80px;
-
-  input,
-  select {
-    padding: 20px 10px;
-    border-radius: 6px;
-    border: solid 1px #444;
-    width: 300px;
-    margin: 10px auto;
-    display: block;
-    padding: 6px;
-    font-size: 18px;
-    margin-top: 10px;
-    margin-left: 80px;
-  }
-  .ng-touched.ng-invalid {
-    border: solid 3px rgb(19, 11, 11);
-    color: rgb(95, 86, 86);
-  }
+.campo{
+  border-radius: 10px;
+  border: 2px rgb(47, 0, 255) solid;
+  padding: 10px;
+  margin: 5px 5px 20px 12px;
 }
-.tabelinha {
+
+.tabela {
   margin: 0 auto;
-  border: solid 1px #ccc;
-  margin-top: 80px;
-  margin-left: 80px;
+  border: solid 2px rgb(67, 24, 223);
   text-align: center;
+  margin-top: 80px;
   tr,
   th,
   td {
@@ -45,14 +23,7 @@
     text-align: center;
     margin-top: 80px;
     margin-left: 80px;
-  }
-  .box {
-    text-align: center;
-    margin-top: 80px;
-    margin-left: 80px;
+
   }
 
-  .box h2 {
-    text-align: justify;
   }
-}

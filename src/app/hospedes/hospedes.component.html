@@ -1,37 +1,47 @@
-<div class="grid">
-  <div class="box">
-    <p>Cadastro de Hospedes</p>
-    <form class="form-box" [formGroup]="form" (ngSubmit)="cadastrar()">
-      <input
+<div class="pagina">
+  <div id = "form">
+  <form action= "">
+    <h2 class = "titulo">Cadastro de Hospedes</h2>
+    <form class="input" [formGroup]="form" (ngSubmit)="cadastrar()">
+
+      <input class = "campo"
         formControlName="nome"
         placeholder="Nome"
         type="text"
         maxlength="64"
       />
-      <input
+      <input class = "campo"
         formControlName="cpf"
         placeholder="Cpf"
         type="text"
         maxlength="14"
       />
-      <input formControlName="telefone" placeholder="Telefone" type="text" />
-      <input
+      <input class = "campo" formControlName="telefone" placeholder="Telefone" type="text" />
+      <input class = "campo"
         formControlName="dataNasc"
         placeholder="Data de Nascimento"
         type="date"
       />
 
-      <button type="submit" [disabled]="!form.valid">Cadastrar</button>
-    </form>
-    <hr />
 
-    <h2>Hospedes</h2>
-    <table class="tabelinha">
+      <div class = "botao">
+      <button type="submit" [disabled]="!form.valid">Cadastrar Hospedes</button>
+      </div>
+    </form>
+  </form>
+
+
+</div>
+
+
+
+    <table class="tabela">
       <tr>
         <th>Nome</th>
         <th>CPF</th>
         <th>Telefone</th>
         <th>Data de Nascimento</th>
+        <th>Ações</th>
       </tr>
       <tr *ngFor="let hospede of hospedes">
         <td>{{ hospede.nome }}</td>
@@ -46,59 +56,7 @@
       </tr>
     </table>
   </div>
-</div>
 
-<div class="box">
-  <p>Aluguel</p>
-  <form
-    class="form-box"
-    [formGroup]="formAddImovel"
-    (ngSubmit)="cadastrarAluguel()"
-  >
-    <select formControlName="idHospedes">
-      <option value="">Selecione um Hospedes</option>
-      <option *ngFor="let hospede of hospedes" value="{{ hospede.id }}">
-        {{ hospede.nome }}
-      </option>
-    </select>
 
-    <select formControlName="idImovel">
-      <option value="">Selecione um Imovel</option>
-      <option *ngFor="let imoveis of imovel" value="{{ imoveis.id }}">
-        {{ imoveis.nome }}
-      </option>
-    </select>
-    <input
-      formControlName="dias"
-      placeholder="dias"
-      type="string"
-      maxlength="200"
-    />
 
-    <button type="submit" [disabled]="!formAddImovel.valid">
-      Cadastrar Aluguel
-    </button>
-  </form>
 
-  <hr />
-
-  <table class="tabelinha">
-    <tr>
-      <th>Hospedes</th>
-      <th>Imovel</th>
-      <th>Dias</th>
-      <th>Valor Total Diaria</th>
-      <th>Status Pedido</th>
-      <th>Status Imovel</th>
-      <th>Ações</th>
-    </tr>
-    <tr *ngFor="let aluguel of alugueis">
-      <td>{{ aluguel.hospedes.nome }}</td>
-      <td>{{ aluguel.imovel.nome }}</td>
-      <td>{{ aluguel.dias }}</td>
-      <td>{{ aluguel.valorTotalDiaria }}</td>
-      <td>{{ aluguel.statusPedido }}</td>
-      <td>{{ aluguel.statusImovel }}</td>
-    </tr>
-  </table>
-</div>

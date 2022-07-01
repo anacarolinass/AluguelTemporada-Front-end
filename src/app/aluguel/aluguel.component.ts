@@ -43,34 +43,35 @@ export class AluguelComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.consultarHospedes();
     this.consultarAluguel();
     this.consultarImoveis();
-    this.consultarHospedes();
   }
 
   private consultarHospedes(): void {
-    this.hospedesService.consultar().subscribe((x) => {
-      this.hospedes = x;
+    this.hospedesService.consultar().subscribe((h) => {
+      this.hospedes = h;
     });
   }
 
   private consultarImoveis(): void {
-    this.imovelService.consultar().subscribe((x) => {
-      this.imovel = x;
+    this.imovelService.consultar().subscribe((i) => {
+      this.imovel = i;
     });
   }
 
   private consultarAluguel(): void {
-    this.aluguelService.consultar().subscribe((x) => {
-      this.alugueis = x;
+    this.aluguelService.consultar().subscribe((a) => {
+      this.alugueis = a;
     });
   }
 
-  cadastrar(): void {
-    if (this.form.valid) {
-      const idHospedes = this.form.controls['idHospedes'].value;
-      const idImovel = this.form.controls['idImovel'].value;
-      const dias = this.form.controls['dias'].value;
+  cadastrarAluguel(): void {
+    if (this.formAddImovel.valid) {
+      const idHospedes = this.formAddImovel.controls['idHospedes'].value;
+      const idImovel = this.formAddImovel.controls['idImovel'].value;
+      const dias = this.formAddImovel.controls['dias'].value;
+
       this.aluguelService
         .cadastrar(idHospedes, idImovel, dias)
         .subscribe(() => {
@@ -95,6 +96,15 @@ export class AluguelComponent implements OnInit {
           this.resetForm();
         });
     }
+  }
+
+
+  excluir(aluguel: Aluguel): void {
+    this.aluguelService.remover(aluguel.id).subscribe((a: Aluguel) => {
+      if (a.id) {
+        this.consultarAluguel();
+      }
+    });
   }
 
   private resetForm(): void {

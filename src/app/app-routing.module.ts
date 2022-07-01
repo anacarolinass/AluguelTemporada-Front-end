@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'sobre', component: SobreComponent },
   { path: 'acomodacoes', component: ImovelComponent },
   { path: 'politica', component: PoliticaComponent },
-  { path: 'reservas', component: HospedesComponent },
+  { path: 'hospedes', component: HospedesComponent },
+  { path: 'reservas', component: AluguelComponent },
 ];
 
 @NgModule({

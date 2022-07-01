@@ -20,8 +20,7 @@ import { Aluguel } from '../domain/aluguel';
 })
 export class HospedesComponent implements OnInit {
   hospedes: Hospedes[] = [];
-  imovel: Imovel[] = [];
-  alugueis: Aluguel[] = [];
+
 
   form: FormGroup = this.formBuilder.group({
     id: new FormControl(null),
@@ -31,34 +30,18 @@ export class HospedesComponent implements OnInit {
     dataNasc: new FormControl(null, [Validators.required]),
   });
 
-  formImovel: FormGroup = this.formBuilder.group({
-    id: new FormControl(null),
-    nome: new FormControl(null, [Validators.required, Validators.minLength(2)]),
-    tipoImovel: new FormControl(null),
-    endereco: new FormControl(null),
-    valorDiaria: new FormControl(null),
-  });
-
-  formAddImovel: FormGroup = this.formBuilder.group({
-    idHospedes: new FormControl('', [Validators.required]),
-    idImovel: new FormControl('', [Validators.required]),
-    dias: new FormControl(),
-  });
 
   constructor(
     private formBuilder: FormBuilder,
     private hospedesService: HospedesService,
-    private imovelService: ImovelService,
-    private aluguelService: AluguelService
+
   ) {}
 
   ngOnInit(): void {
-    this.carregarTabela();
-    this.consultarAluguel();
-    this.consultarImoveis();
-    this.consultarHospedes();
+    this.carregarHospedes();
+
   }
-  private carregarTabela(): void {
+  private carregarHospedes(): void {
     this.hospedesService.consultar().subscribe((domains: Hospedes[]) => {
       if (domains) {
         this.hospedes = domains;
@@ -74,7 +57,7 @@ export class HospedesComponent implements OnInit {
         .alterar(id, hospedes)
         .subscribe((domain: Hospedes) => {
           if (domain.id) {
-            this.carregarTabela();
+            this.carregarHospedes();
             this.form.reset();
           }
         });
@@ -99,67 +82,9 @@ export class HospedesComponent implements OnInit {
   apagar(hospedes: Hospedes): void {
     this.hospedesService.remover(hospedes.id).subscribe((d: Hospedes) => {
       if (d.id) {
-        this.carregarTabela();
+        this.carregarHospedes();
       }
     });
   }
-
-  private consultarHospedes(): void {
-    this.hospedesService.consultar().subscribe((x) => {
-      this.hospedes = x;
-    });
-  }
-
-  private consultarImoveis(): void {
-    this.imovelService.consultar().subscribe((x) => {
-      this.imovel = x;
-    });
-  }
-
-  private consultarAluguel(): void {
-    this.aluguelService.consultar().subscribe((x) => {
-      this.alugueis = x;
-    });
-  }
-
-  cadastrarAluguel(): void {
-    if (this.formAddImovel.valid) {
-      const idHospedes = this.formAddImovel.controls['idHospedes'].value;
-      const idImovel = this.formAddImovel.controls['idImovel'].value;
-      const dias = this.formAddImovel.controls['dias'].value;
-
-      this.aluguelService
-        .cadastrar(idHospedes, idImovel, dias)
-        .subscribe(() => {
-          this.consultarAluguel();
-          this.formAddImovel.reset;
-        });
-    }
-  }
-
-  verModal(aluguel: Aluguel): void {
-    this.formAddImovel.controls['idAluguel'].setValue(aluguel.id);
-  }
-
-  addImovel(): void {
-    if (this.formAddImovel.valid) {
-      const idAluguel = this.formAddImovel.controls['idAluguel'].value;
-      const idImovel = this.formAddImovel.controls['idImovel'].value;
-      this.aluguelService
-        .adicionarImoveis(idAluguel, idImovel)
-        .subscribe(() => {
-          this.consultarImoveis();
-          this.formAddImovel.reset();
-        });
-    }
-  }
-
-  private resetForm(): void {
-    this.form.reset();
-    this.form.controls['idHospedes'].setValue('');
-    this.form.controls['idImovel'].setValue('');
-
-    this.formAddImovel.reset();
-    this.form.controls['idImovel'].setValue('');
-  }
 }
+

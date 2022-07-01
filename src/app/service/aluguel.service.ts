@@ -39,4 +39,8 @@ export class AluguelService {
       valor,
     });
   }
+
+  remover(id: string): Observable<Aluguel> {
+    return this.http.delete<Aluguel>(this.url + 'remover/' + id);
+  }
 }

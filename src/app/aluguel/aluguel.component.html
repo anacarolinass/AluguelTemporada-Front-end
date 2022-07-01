@@ -1,1 +1,65 @@
+<div class="pagina">
+<div id="form">
+  <form action= "">
+    <h2 class = "titulo">Cadastro de Alugueis</h2>
+  <form
+    class="input"
+    [formGroup]="formAddImovel"
+    (ngSubmit)="cadastrarAluguel()"
+  >
+    <select formControlName="idHospedes">
+      <option value="">Selecione um Hospede</option>
+      <option *ngFor="let hospede of hospedes" value="{{ hospede.id }}">
+        {{ hospede.nome }}
+      </option>
+    </select>
+
+    <select formControlName="idImovel">
+      <option value="">Selecione um Imovel</option>
+      <option *ngFor="let imoveis of imovel" value="{{ imoveis.id }}">
+        {{ imoveis.nome }}
+      </option>
+    </select>
+    <input class = "d"
+      formControlName="dias"
+      placeholder="dias"
+      type="string"
+      maxlength="30"
+    />
+    <div class = "botao">
+    <button type="submit" [disabled]="!formAddImovel.valid">
+      Cadastrar Aluguel
+    </button>
+  </div>
+  </form>
+</form>
+
+</div>
+
+
+  <table class="tabela">
+
+      <th>Hospedes</th>
+      <th>Imovel</th>
+      <th>Dias</th>
+      <th>Valor Total Diaria</th>
+      <th>Status Pedido</th>
+      <th>Status Imovel</th>
+      <th>Ações</th>
+
+    <tr *ngFor="let aluguel of alugueis">
+      <td>{{ aluguel.hospede.nome }}</td>
+      <td>{{ aluguel.imovel.nome }}</td>
+      <td>{{ aluguel.dias }}</td>
+      <td>{{ aluguel.valorTotalDiaria }}</td>
+      <td>{{ aluguel.statusPedido }}</td>
+      <td>{{ aluguel.statusImovel }}</td>
+
+      <td>
+
+        <button (click)="excluir(aluguel)">Remover</button>
+      </td>
+
+  </table>
+</div>
 
