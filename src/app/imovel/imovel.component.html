@@ -6,13 +6,19 @@
       <th>Nome</th>
       <th>Tipo Imovel</th>
       <th>Endereço</th>
+      <th>Numero</th>
+      <th>Bairro</th>
+      <th>Cidade</th>
       <th>Valor da Diaria</th>
-      <th>Ações</th>
+
     </tr>
     <tr *ngFor="let imovel of imoveis">
       <td>{{ imovel.nome }}</td>
       <td>{{ imovel.tipoImovel }}</td>
-      <td>{{ imovel.endereco }}</td>
+      <td>{{ imovel.endereco.endereco }}</td>
+      <td>{{ imovel.endereco.numero }}</td>
+      <td>{{ imovel.endereco.bairro }}</td>
+      <td>{{ imovel.endereco.cidade }}</td>
       <td>{{ imovel.valorDiaria }}</td>
 
       <td>

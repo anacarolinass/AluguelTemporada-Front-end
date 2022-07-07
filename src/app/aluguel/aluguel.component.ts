@@ -1,3 +1,4 @@
+
 import { ImovelService } from './../service/imovel.service';
 import { HospedesService } from './../service/hospedes.service';
 
@@ -22,6 +23,8 @@ export class AluguelComponent implements OnInit {
   alugueis: Aluguel[] = [];
   hospedes: Hospedes[] = [];
   imovel: Imovel[] = [];
+  modal: boolean = false;
+  modalPagar: boolean = false;
 
   form: FormGroup = this.formBuilder.group({
     idHospedes: new FormControl('', [Validators.required]),
@@ -33,6 +36,11 @@ export class AluguelComponent implements OnInit {
     idHospedes: new FormControl('', [Validators.required]),
     idImovel: new FormControl('', [Validators.required]),
     dias: new FormControl(),
+  });
+
+  formPagar: FormGroup = this.formBuilder.group({
+    id: new FormControl('', [Validators.required]),
+    FormaDePagamentoEnum: new FormControl('', [Validators.required]),
   });
 
   constructor(
@@ -97,7 +105,35 @@ export class AluguelComponent implements OnInit {
         });
     }
   }
+  mostrarModalPagar(aluguel: Aluguel): void {
+    this.ativarModalPagar();
+    this.formPagar.controls['id'].setValue(aluguel.id);
+  }
 
+  fecharModalPagar(): void {
+    this.modal = false;
+    this.formPagar.reset();
+  }
+
+  ativarModalPagar(): void {
+    this.modalPagar = true;
+    this.formPagar.reset();
+  }
+
+  pagar(): void {
+    if (this.formPagar.valid) {
+      const idImovel = this.formPagar.controls['id'].value;
+      const enumFormaDePagamento =
+        this.formPagar.controls['enumFormaDePagamento'].value;
+
+      this.aluguelService
+        .pagar(idImovel, enumFormaDePagamento)
+        .subscribe(() => {
+          this.consultarImoveis();
+          this.formPagar.reset();
+        });
+    }
+  }
 
   excluir(aluguel: Aluguel): void {
     this.aluguelService.remover(aluguel.id).subscribe((a: Aluguel) => {

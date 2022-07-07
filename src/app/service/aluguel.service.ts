@@ -1,3 +1,4 @@
+import { Imovel } from './../domain/Imovel';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
@@ -34,9 +35,9 @@ export class AluguelService {
     });
   }
 
-  pagar(id: string, valor: number): Observable<Aluguel> {
-    return this.http.put<Aluguel>(this.url + 'pagar/' + id, {
-      valor,
+  pagar(id: string, enumFormaDePagamento: string): Observable<Imovel> {
+    return this.http.put<Imovel>(this.url + 'pagar/' + id, {
+      enumFormaDePagamento: enumFormaDePagamento,
     });
   }
 
