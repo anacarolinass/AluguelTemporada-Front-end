@@ -40,7 +40,7 @@ export class AluguelComponent implements OnInit {
 
   formPagar: FormGroup = this.formBuilder.group({
     id: new FormControl('', [Validators.required]),
-    FormaDePagamentoEnum: new FormControl('', [Validators.required]),
+    enumFormaDePagamento: new FormControl('', [Validators.required]),
   });
 
   constructor(
@@ -84,7 +84,7 @@ export class AluguelComponent implements OnInit {
         .cadastrar(idHospedes, idImovel, dias)
         .subscribe(() => {
           this.consultarAluguel();
-          this.resetForm();
+
         });
     }
   }
@@ -101,10 +101,15 @@ export class AluguelComponent implements OnInit {
         .adicionarImoveis(idAluguel, idImovel)
         .subscribe(() => {
           this.consultarImoveis();
-          this.resetForm();
+
         });
     }
   }
+  mostrarModal(aluguel: Aluguel): void {
+    this.ativarModal();
+    this.formAddImovel.controls['id'].setValue(aluguel.id);
+  }
+
   mostrarModalPagar(aluguel: Aluguel): void {
     this.ativarModalPagar();
     this.formPagar.controls['id'].setValue(aluguel.id);
@@ -113,6 +118,10 @@ export class AluguelComponent implements OnInit {
   fecharModalPagar(): void {
     this.modal = false;
     this.formPagar.reset();
+  }
+  ativarModal(): void {
+    this.modal = true;
+    this.formAddImovel.reset();
   }
 
   ativarModalPagar(): void {
@@ -143,12 +152,4 @@ export class AluguelComponent implements OnInit {
     });
   }
 
-  private resetForm(): void {
-    this.form.reset();
-    this.form.controls['idHospedes'].setValue('');
-    this.form.controls['idImovel'].setValue('');
-
-    this.formAddImovel.reset();
-    this.form.controls['idImovel'].setValue('');
-  }
 }

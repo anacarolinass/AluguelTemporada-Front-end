@@ -58,8 +58,36 @@
       <td>
 
         <button (click)="excluir(aluguel)">Remover</button>
+        <button (click)="pagar()">Pagar</button>
+
+
+
       </td>
 
+
+
+      <form
+      *ngIf="formPagar.controls['id'].value && modalPagar"
+      class="modal"
+      [formGroup]="formPagar"
+      (ngSubmit)="pagar()"
+    >
+      <h1 class="cadastrar-modal">PAGAMENTO</h1>
+      <select formControlName="enumFormaDePagamento">
+        <option value="PIX">CREDITO</option>
+        <option value="CREDITO">CREDITO</option>
+        <option value="DEBITO">DEBITO</option>
+      </select>
+      <button type="submit" [disabled]="!formPagar.valid">Pagar</button>
+      <button type="button" (click)="fecharModalPagar()">Cancelar</button>
+    </form>
   </table>
+
+
+
+
 </div>
+
+
+
 

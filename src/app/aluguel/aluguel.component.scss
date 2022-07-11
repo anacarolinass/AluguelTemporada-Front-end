@@ -21,4 +21,20 @@
 
 
   }
+
+
+  .modal {
+    position: absolute;
+
+    background-color: black;
+    padding: 50px;
+    border-bottom: 5px black;
+
+    .cadastro-modal {
+      color: rgb(12, 10, 10);
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+
   }
