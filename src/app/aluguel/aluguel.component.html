@@ -1,51 +1,49 @@
 <div class="pagina">
-<div id="form">
-  <form action= "">
-    <h2 class = "titulo">Cadastro de Alugueis</h2>
-  <form
-    class="input"
-    [formGroup]="formAddImovel"
-    (ngSubmit)="cadastrarAluguel()"
-  >
-    <select formControlName="idHospedes">
-      <option value="">Selecione um Hospede</option>
-      <option *ngFor="let hospede of hospedes" value="{{ hospede.id }}">
-        {{ hospede.nome }}
-      </option>
-    </select>
+  <div id="form">
+    <form action="">
+      <h2 class="titulo">Cadastro de Alugueis</h2>
+      <form
+        class="input"
+        [formGroup]="formAddImovel"
+        (ngSubmit)="cadastrarAluguel()"
+      >
+        <select formControlName="idHospedes">
+          <option value="">Selecione um Hospede</option>
+          <option *ngFor="let hospede of hospedes" value="{{ hospede.id }}">
+            {{ hospede.nome }}
+          </option>
+        </select>
 
-    <select formControlName="idImovel">
-      <option value="">Selecione um Imovel</option>
-      <option *ngFor="let imoveis of imovel" value="{{ imoveis.id }}">
-        {{ imoveis.nome }}
-      </option>
-    </select>
-    <input class = "d"
-      formControlName="dias"
-      placeholder="dias"
-      type="string"
-      maxlength="30"
-    />
-    <div class = "botao">
-    <button type="submit" [disabled]="!formAddImovel.valid">
-      Cadastrar Aluguel
-    </button>
+        <select formControlName="idImovel">
+          <option value="">Selecione um Imovel</option>
+          <option *ngFor="let imoveis of imovel" value="{{ imoveis.id }}">
+            {{ imoveis.nome }}
+          </option>
+        </select>
+        <input
+          class="d"
+          formControlName="dias"
+          placeholder="dias"
+          type="string"
+          maxlength="30"
+        />
+        <div class="botao">
+          <button type="submit" [disabled]="!formAddImovel.valid">
+            Cadastrar Aluguel
+          </button>
+        </div>
+      </form>
+    </form>
   </div>
-  </form>
-</form>
-
-</div>
-
 
   <table class="tabela">
-
-      <th>Hospedes</th>
-      <th>Imovel</th>
-      <th>Dias</th>
-      <th>Valor Total Diaria</th>
-      <th>Status Pedido</th>
-      <th>Status Imovel</th>
-      <th>Ações</th>
+    <th>Hospedes</th>
+    <th>Imovel</th>
+    <th>Dias</th>
+    <th>Valor Total Diaria</th>
+    <th>Status Pedido</th>
+    <th>Status Imovel</th>
+    <th>Ações</th>
 
     <tr *ngFor="let aluguel of alugueis">
       <td>{{ aluguel.hospede.nome }}</td>
@@ -56,38 +54,24 @@
       <td>{{ aluguel.statusImovel }}</td>
 
       <td>
-
         <button (click)="excluir(aluguel)">Remover</button>
-        <button (click)="pagar()">Pagar</button>
-
-
-
+        <button (click)="mostrarModalPagar(aluguel)">Pagar</button>
       </td>
 
-
-
       <form
-      *ngIf="formPagar.controls['id'].value && modalPagar"
-      class="modal"
-      [formGroup]="formPagar"
-      (ngSubmit)="pagar()"
-    >
-      <h1 class="cadastrar-modal">PAGAMENTO</h1>
-      <select formControlName="enumFormaDePagamento">
-        <option value="PIX">CREDITO</option>
-        <option value="CREDITO">CREDITO</option>
-        <option value="DEBITO">DEBITO</option>
-      </select>
-      <button type="submit" [disabled]="!formPagar.valid">Pagar</button>
-      <button type="button" (click)="fecharModalPagar()">Cancelar</button>
-    </form>
+        *ngIf="formPagar.controls['id'].value"
+        [formGroup]="formPagar"
+        (ngSubmit)="pagar()"
+      >
+        <h1 class="cadastrar-modal">PAGAMENTO</h1>
+        <select formControlName="enumFormaDePagamento">
+          <option value="PIX">CREDITO</option>
+          <option value="CREDITO">CREDITO</option>
+          <option value="DEBITO">DEBITO</option>
+        </select>
+        <button type="submit" [disabled]="!formPagar.valid">Pagar</button>
+        <button type="button" (click)="fecharModalPagar()">Cancelar</button>
+      </form>
+    </tr>
   </table>
-
-
-
-
 </div>
-
-
-
-

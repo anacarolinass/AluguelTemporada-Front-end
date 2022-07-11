@@ -18,23 +18,14 @@
     text-align: center;
     margin-top: 80px;
     margin-left: 80px;
-
-
   }
 
-
-  .modal {
-    position: absolute;
-
+  .cadastrar-modal {
+    color: rgb(12, 10, 10);
+    font-size: 20px;
+    text-align: center;
+  }
+  h1 {
     background-color: black;
-    padding: 50px;
-    border-bottom: 5px black;
-
-    .cadastro-modal {
-      color: rgb(12, 10, 10);
-      font-size: 20px;
-      text-align: center;
-    }
   }
-
-  }
+}
