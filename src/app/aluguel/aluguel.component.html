@@ -60,18 +60,22 @@
     </tr>
   </table>
 
+
+    <div id = "form">
+    <form action= "">
   <form
-    *ngIf="formPagar.controls['id'].value"
+  *ngIf="formPagar.controls['id'].value"
+
     [formGroup]="formPagar"
     (ngSubmit)="pagar()"
   >
-    <h1 class="cadastrar-modal" style="font-size: 50px">PAGAMENTO</h1>
+    <h1 class="cadastrar-modal">Pagamento</h1>
     <select formControlName="enumFormaDePagamento">
-      <option value="PIX">CREDITO</option>
+      <option value="PIX">PIX</option>
       <option value="CREDITO">CREDITO</option>
       <option value="DEBITO">DEBITO</option>
     </select>
     <button type="submit" [disabled]="!formPagar.valid">Pagar</button>
     <button type="button" (click)="fecharModalPagar()">Cancelar</button>
   </form>
-</div>
+
